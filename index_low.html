@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Hollow Knight 竞技场视频（低码率）</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <style>
+        body { text-align: center; font-family: Arial; padding: 20px; }
+        video { width: 80%; max-width: 1200px; border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <h1>🎮 Hollow Knight 3钉无护符低伤过竞技场三（低码率）</h1>
+    <video id="video" controls></video>
+    <script>
+        var video = document.getElementById('video');
+        var videoSrc = './output_low/playlist.m3u8'; // 注意路径：相对于 index_low.html
+        if (Hls.isSupported()) {
+            var hls = new Hls();
+            hls.loadSource(videoSrc);
+            hls.attachMedia(video);
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            video.src = videoSrc; // Safari 等原生支持 HLS 的浏览器
+        }
+    </script>
+    <p>如果播放卡顿，请耐心等待缓冲（已启用流式加载，无需完全下载）。</p>
+</body>
+</html>
